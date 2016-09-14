@@ -693,6 +693,87 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
 #endif
 
 /******************************************************************************\
+ * enable this section if you have TMC2130 motor drivers.
+ * you need to import the Trinamic_TMC2130 library into the Arduino IDE for this
+ ******************************************************************************/
+
+// @section tmc2130
+
+#define HAVE_TMC2130DRIVER
+#if ENABLED(HAVE_TMC2130DRIVER)
+  #define X_IS_TMC2130
+  #define X_IHOLD      31   // 0-31
+  #define X_IRUN       31   // 0-31
+  #define X_IHOLDDELAY 15   // 0-15
+  #define X_ISCALE     1    // 0: Normal, 1: AIN
+  #define X_MICROSTEPS 16   // number of microsteps
+
+  //#define X2_IS_TMC2130
+  #define X2_IHOLD      31   // 0-31
+  #define X2_IRUN       31   // 0-31
+  #define X2_IHOLDDELAY 15   // 0-15
+  #define X2_ISCALE     1    // 0: Normal, 1: AIN
+  #define X2_MICROSTEPS 16   // number of microsteps
+
+  #define Y_IS_TMC2130
+  #define Y_IHOLD      31   // 0-31
+  #define Y_IRUN       31   // 0-31
+  #define Y_IHOLDDELAY 15   // 0-15
+  #define Y_ISCALE     1    // 0: Normal, 1: AIN
+  #define Y_MICROSTEPS 16   // number of microsteps
+
+  //#define Y2_IS_TMC2130
+  #define Y2_IHOLD      31   // 0-31
+  #define Y2_IRUN       31   // 0-31
+  #define Y2_IHOLDDELAY 15   // 0-15
+  #define Y2_ISCALE     1    // 0: Normal, 1: AIN
+  #define Y2_MICROSTEPS 16   // number of microsteps
+
+  //#define Z_IS_TMC2130
+  #define Z_IHOLD      31   // 0-31
+  #define Z_IRUN       31   // 0-31
+  #define Z_IHOLDDELAY 15   // 0-15
+  #define Z_ISCALE     1    // 0: Normal, 1: AIN
+  #define Z_MICROSTEPS 16   // number of microsteps
+
+  //#define Z2_IS_TMC2130
+  #define Z2_IHOLD      31   // 0-31
+  #define Z2_IRUN       31   // 0-31
+  #define Z2_IHOLDDELAY 15   // 0-15
+  #define Z2_ISCALE     1    // 0: Normal, 1: AIN
+  #define Z2_MICROSTEPS 16   // number of microsteps
+
+  //#define E0_IS_TMC2130
+  #define E0_IHOLD      31   // 0-31
+  #define E0_IRUN       31   // 0-31
+  #define E0_IHOLDDELAY 15   // 0-15
+  #define E0_ISCALE     1    // 0: Normal, 1: AIN
+  #define E0_MICROSTEPS 16   // number of microsteps
+
+  //#define E1_IS_TMC2130
+  #define E1_IHOLD      31   // 0-31
+  #define E1_IRUN       31   // 0-31
+  #define E1_IHOLDDELAY 15   // 0-15
+  #define E1_ISCALE     1    // 0: Normal, 1: AIN
+  #define E1_MICROSTEPS 16   // number of microsteps
+
+  //#define E2_IS_TMC2130
+  #define E2_IHOLD      31   // 0-31
+  #define E2_IRUN       31   // 0-31
+  #define E2_IHOLDDELAY 15   // 0-15
+  #define E2_ISCALE     1    // 0: Normal, 1: AIN
+  #define E2_MICROSTEPS 16   // number of microsteps
+
+  //#define E3_IS_TMC2130
+  #define E3_IHOLD      31   // 0-31
+  #define E3_IRUN       31   // 0-31
+  #define E3_IHOLDDELAY 15   // 0-15
+  #define E3_ISCALE     1    // 0: Normal, 1: AIN
+  #define E3_MICROSTEPS 16   // number of microsteps
+
+#endif
+
+/******************************************************************************\
  * enable this section if you have L6470  motor drivers.
  * you need to import the L6470 library into the Arduino IDE for this
  ******************************************************************************/

@@ -5192,6 +5192,40 @@ inline void gcode_M117() {
 inline void gcode_M119() { endstops.M119(); }
 
 /**
+ * M122: Output Trinamic TMC2130 status to serial output. Very bad formatting.
+ */
+inline void gcode_M122() {
+    SERIAL_PROTOCOLLNPGM("REPORTING TMC2130 STATUS");
+    #if ENABLED(HAVE_TMC2130DRIVER) && ENABLED(X_IS_TMC2130)
+      stepperX.readStatus();
+      SERIAL_PROTOCOLLN("X-AXIS: ");
+      SERIAL_PROTOCOLLN((stepperX.isReset() ? "RESET " : "----- "));
+      SERIAL_PROTOCOLLN((stepperX.isError() ? "ERROR " : "----- "));
+      SERIAL_PROTOCOLLN((stepperX.isStallguard() ? "SLGRD " : "----- "));
+      SERIAL_PROTOCOLLN((stepperX.isStandstill() ? "STILL " : "----- "));
+      SERIAL_PROTOCOLLN("-----");
+    #endif
+    #if ENABLED(HAVE_TMC2130DRIVER) && ENABLED(Y_IS_TMC2130)
+      stepperY.readStatus();
+      SERIAL_PROTOCOLLN("Y-AXIS: ");
+      SERIAL_PROTOCOLLN((stepperY.isReset() ? "RESET " : "----- "));
+      SERIAL_PROTOCOLLN((stepperY.isError() ? "ERROR " : "----- "));
+      SERIAL_PROTOCOLLN((stepperY.isStallguard() ? "SLGRD " : "----- "));
+      SERIAL_PROTOCOLLN((stepperY.isStandstill() ? "STILL " : "----- "));
+      SERIAL_PROTOCOLLN("-----");
+    #endif
+    #if ENABLED(HAVE_TMC2130DRIVER) && ENABLED(Z_IS_TMC2130)
+      stepperZ.readStatus();
+      SERIAL_PROTOCOLLN("Z-AXIS: ");
+      SERIAL_PROTOCOLLN((stepperZ.isReset() ? "RESET " : "----- "));
+      SERIAL_PROTOCOLLN((stepperZ.isError() ? "ERROR " : "----- "));
+      SERIAL_PROTOCOLLN((stepperZ.isStallguard() ? "SLGRD " : "----- "));
+      SERIAL_PROTOCOLLN((stepperZ.isStandstill() ? "STILL " : "----- "));
+      SERIAL_PROTOCOLLN("-----");
+    #endif
+}
+
+/**
  * M120: Enable endstops and set non-homing endstop state to "enabled"
  */
 inline void gcode_M120() { endstops.enable_globally(true); }
@@ -7342,6 +7376,9 @@ void process_next_command() {
         break;
       case 119: // M119: Report endstop states
         gcode_M119();
+        break;
+      case 122: // M122: Diagnose, used to debug TMC2130
+        gcode_M122();
         break;
 
       #if ENABLED(ULTIPANEL)
