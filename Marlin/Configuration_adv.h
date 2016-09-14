@@ -707,6 +707,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define X_IHOLDDELAY 15   // 0-15
   #define X_ISCALE     1    // 0: Normal, 1: AIN
   #define X_MICROSTEPS 16   // number of microsteps
+  #define X_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define X_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
   //#define X2_IS_TMC2130
   #define X2_IHOLD      31   // 0-31
@@ -714,6 +716,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define X2_IHOLDDELAY 15   // 0-15
   #define X2_ISCALE     1    // 0: Normal, 1: AIN
   #define X2_MICROSTEPS 16   // number of microsteps
+  #define X2_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define X2_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
   #define Y_IS_TMC2130
   #define Y_IHOLD      31   // 0-31
@@ -721,6 +725,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define Y_IHOLDDELAY 15   // 0-15
   #define Y_ISCALE     1    // 0: Normal, 1: AIN
   #define Y_MICROSTEPS 16   // number of microsteps
+  #define Y_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define Y_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
   //#define Y2_IS_TMC2130
   #define Y2_IHOLD      31   // 0-31
@@ -728,6 +734,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define Y2_IHOLDDELAY 15   // 0-15
   #define Y2_ISCALE     1    // 0: Normal, 1: AIN
   #define Y2_MICROSTEPS 16   // number of microsteps
+  #define Y2_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define Y2_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
   //#define Z_IS_TMC2130
   #define Z_IHOLD      31   // 0-31
@@ -735,6 +743,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define Z_IHOLDDELAY 15   // 0-15
   #define Z_ISCALE     1    // 0: Normal, 1: AIN
   #define Z_MICROSTEPS 16   // number of microsteps
+  #define Z_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define Z_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
   //#define Z2_IS_TMC2130
   #define Z2_IHOLD      31   // 0-31
@@ -742,6 +752,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define Z2_IHOLDDELAY 15   // 0-15
   #define Z2_ISCALE     1    // 0: Normal, 1: AIN
   #define Z2_MICROSTEPS 16   // number of microsteps
+  #define Z2_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define Z2_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
   //#define E0_IS_TMC2130
   #define E0_IHOLD      31   // 0-31
@@ -749,6 +761,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define E0_IHOLDDELAY 15   // 0-15
   #define E0_ISCALE     1    // 0: Normal, 1: AIN
   #define E0_MICROSTEPS 16   // number of microsteps
+  #define E0_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define E0_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
   //#define E1_IS_TMC2130
   #define E1_IHOLD      31   // 0-31
@@ -756,6 +770,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define E1_IHOLDDELAY 15   // 0-15
   #define E1_ISCALE     1    // 0: Normal, 1: AIN
   #define E1_MICROSTEPS 16   // number of microsteps
+  #define E1_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define E1_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
   //#define E2_IS_TMC2130
   #define E2_IHOLD      31   // 0-31
@@ -763,6 +779,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define E2_IHOLDDELAY 15   // 0-15
   #define E2_ISCALE     1    // 0: Normal, 1: AIN
   #define E2_MICROSTEPS 16   // number of microsteps
+  #define E2_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define E2_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
   //#define E3_IS_TMC2130
   #define E3_IHOLD      31   // 0-31
@@ -770,6 +788,8 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
   #define E3_IHOLDDELAY 15   // 0-15
   #define E3_ISCALE     1    // 0: Normal, 1: AIN
   #define E3_MICROSTEPS 16   // number of microsteps
+  #define E3_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+  #define E3_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
 
 #endif
 

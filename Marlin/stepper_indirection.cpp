@@ -171,60 +171,80 @@ void tmc2130_init() {
     stepperX.setMicrosteps(X_MICROSTEPS);
     stepperX.setCurrent(X_IHOLD,X_IRUN,X2_IHOLDDELAY);
     stepperX.setIScale(X_ISCALE);
+    stepperX.setTBL(X_TBL);
+    stepperX.setTOFF(X_TOFF);
   #endif
   #if ENABLED(X2_IS_TMC2130)
     stepperX2.init();
     stepperX2.setMicrosteps(X2_MICROSTEPS);
     stepperX2.setCurrent(X2_IHOLD,X2_IRUN,X2_IHOLDDELAY);
     stepperX2.setIScale(X2_ISCALE);
+    stepperX2.setTBL(X2_TBL);
+    stepperX2.setTOFF(X2_TOFF);
   #endif
   #if ENABLED(Y_IS_TMC2130)
     stepperY.init();
     stepperY.setMicrosteps(Y_MICROSTEPS);
     stepperY.setCurrent(Y_IHOLD,Y_IRUN,Y_IHOLDDELAY);
     stepperY.setIScale(Y_ISCALE);
+    stepperY.setTBL(Y_TBL);
+    stepperY.setTOFF(Y_TOFF);
   #endif
   #if ENABLED(Y2_IS_TMC2130)
     stepperY2.init();
     stepperY2.setMicrosteps(Y2_MICROSTEPS);
     stepperY2.setCurrent(Y2_IHOLD,Y2_IRUN,Y2_IHOLDDELAY);
     stepperY2.setIScale(Y2_ISCALE);
+    stepperY2.setTBL(Y2_TBL);
+    stepperY2.setTOFF(Y2_TOFF);
   #endif
   #if ENABLED(Z_IS_TMC2130)
     stepperZ.init();
     stepperZ.setMicrosteps(Z_MICROSTEPS);
     stepperZ.setCurrent(Z_IHOLD,Z_IRUN,Z_IHOLDDELAY);
     stepperZ.setIScale(Z_ISCALE);
+    stepperZ.setTBL(Z_TBL);
+    stepperZ.setTOFF(Z_TOFF);
   #endif
   #if ENABLED(Z2_IS_TMC2130)
     stepperZ2.init();
     stepperZ2.setMicrosteps(Z2_MICROSTEPS);
     stepperZ2.setCurrent(Z2_IHOLD,Z2_IRUN,Z2_IHOLDDELAY);
     stepperZ2.setIScale(Z2_ISCALE);
+    stepperZ2.setTBL(Z2_TBL);
+    stepperZ2.setTOFF(Z2_TOFF);
   #endif
   #if ENABLED(E0_IS_TMC2130)
     stepperE0.init();
     stepperE0.setMicrosteps(E0_MICROSTEPS);
     stepperE0.setCurrent(E0_IHOLD,E0_IRUN,E0_IHOLDDELAY);
     stepperE0.setIScale(E0_ISCALE);
+    stepperE0.setTBL(E0_TBL);
+    stepperE0.setTOFF(E0_TOFF);
   #endif
   #if ENABLED(E1_IS_TMC2130)
     stepperE1.init();
     stepperE1.setMicrosteps(E1_MICROSTEPS);
     stepperE1.setCurrent(E1_IHOLD,E1_IRUN,E1_IHOLDDELAY);
     stepperE1.setIScale(E1_ISCALE);
+    stepperE1.setTBL(E1_TBL);
+    stepperE1.setTOFF(E1_TOFF);
   #endif
   #if ENABLED(E2_IS_TMC2130)
     stepperE2.init();
     stepperE2.setMicrosteps(E2_MICROSTEPS);
     stepperE2.setCurrent(E2_IHOLD,E2_IRUN,E2_IHOLDDELAY);
     stepperE2.setIScale(E2_ISCALE);
+    stepperE2.setTBL(E2_TBL);
+    stepperE2.setTOFF(E2_TOFF);
   #endif
   #if ENABLED(E3_IS_TMC2130)
     stepperE3.init();
     stepperE3.setMicrosteps(E3_MICROSTEPS);
     stepperE3.setCurrent(E3_IHOLD,E3_IRUN,E3_IHOLDDELAY);
     stepperE3.setIScale(E3_ISCALE);
+    stepperE3.setTBL(E3_TBL);
+    stepperE3.setTOFF(E3_TOFF);
   #endif
 }
 #endif
