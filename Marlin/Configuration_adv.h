@@ -700,97 +700,211 @@ const unsigned int dropsegments = 5; //everything with less than this number of 
 // @section tmc2130
 
 #define HAVE_TMC2130DRIVER
+
+// ADVANCED CONFIGURATION ("DOUBLE ADVANCED")
+#define TMC2130_ADVANCED_CONFIGURATION
+
 #if ENABLED(HAVE_TMC2130DRIVER)
-  #define X_IS_TMC2130
-  #define X_IHOLD      31   // 0-31
-  #define X_IRUN       31   // 0-31
-  #define X_IHOLDDELAY 15   // 0-15
-  #define X_ISCALE     1    // 0: Normal, 1: AIN
-  #define X_MICROSTEPS 16   // number of microsteps
-  #define X_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define X_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+  #if ENABLED(TMC2130_ADVANCED_CONFIGURATION)
 
-  //#define X2_IS_TMC2130
-  #define X2_IHOLD      31   // 0-31
-  #define X2_IRUN       31   // 0-31
-  #define X2_IHOLDDELAY 15   // 0-15
-  #define X2_ISCALE     1    // 0: Normal, 1: AIN
-  #define X2_MICROSTEPS 16   // number of microsteps
-  #define X2_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define X2_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+    // CHOOSE YOUR MOTORS HERE, THIS IS MANDATORY
 
-  #define Y_IS_TMC2130
-  #define Y_IHOLD      31   // 0-31
-  #define Y_IRUN       31   // 0-31
-  #define Y_IHOLDDELAY 15   // 0-15
-  #define Y_ISCALE     1    // 0: Normal, 1: AIN
-  #define Y_MICROSTEPS 16   // number of microsteps
-  #define Y_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define Y_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+    #define X_IS_TMC2130
+    //#define X2_IS_TMC2130
+    #define Y_IS_TMC2130
+    //#define Y2_IS_TMC2130
+    //#define Z_IS_TMC2130
+    //#define Z2_IS_TMC2130
+    //#define E0_IS_TMC2130
+    //#define E1_IS_TMC2130
+    //#define E2_IS_TMC2130
+    //#define E3_IS_TMC2130
 
-  //#define Y2_IS_TMC2130
-  #define Y2_IHOLD      31   // 0-31
-  #define Y2_IRUN       31   // 0-31
-  #define Y2_IHOLDDELAY 15   // 0-15
-  #define Y2_ISCALE     1    // 0: Normal, 1: AIN
-  #define Y2_MICROSTEPS 16   // number of microsteps
-  #define Y2_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define Y2_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+    // IF YOU HAVE ENABLED TMC2130_ADVANCED_CONFIGURATION,
+    // YOU CAN DEFINE GLOBAL SETTINGS HERE, BUT YOU STILL NEED
+    // TO CONFIGURE THE tmc2130.init() METHOD MANUALLY IN THE FILE
+    //
+    // stepper_indirection.cpp
+    //
+    // PLEASE READ THE TMC2130 DATASHEET:
+    // http://www.trinamic.com/_articles/products/integrated-circuits/tmc2130/_datasheet/TMC2130_datasheet.pdf
+    // ALL SETTINGS HERE HAVE THE SAME (SOMETIMES CRYPTIC)
+    // NAMES AS IN THE DATASHEET.
+    //
+    // THE FOLLOWING, UNCOMMENTED SETTINGS ARE ONLY SUGGESTION.
 
-  //#define Z_IS_TMC2130
-  #define Z_IHOLD      31   // 0-31
-  #define Z_IRUN       31   // 0-31
-  #define Z_IHOLDDELAY 15   // 0-15
-  #define Z_ISCALE     1    // 0: Normal, 1: AIN
-  #define Z_MICROSTEPS 16   // number of microsteps
-  #define Z_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define Z_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+    /* GENERAL CONFIGURATION */
 
-  //#define Z2_IS_TMC2130
-  #define Z2_IHOLD      31   // 0-31
-  #define Z2_IRUN       31   // 0-31
-  #define Z2_IHOLDDELAY 15   // 0-15
-  #define Z2_ISCALE     1    // 0: Normal, 1: AIN
-  #define Z2_MICROSTEPS 16   // number of microsteps
-  #define Z2_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define Z2_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+    //#define GLOBAL_EN_PWM_MODE 0
+    #define GLOBAL_I_SCALE_ANALOG 1 // [0,1] 0: Normal, 1: AIN
+    //#define GLOBAL_INTERNAL_RSENSE 0 // [0,1] 0: Normal, 1: Internal
+    #define GLOBAL_EN_PWM_MODE 0 // [0,1] 0: Normal, 1: stealthChop with velocity threshold
+    //#define GLOBAL_ENC_COMMUTATION 0 // [0,1]
+    #define GLOBAL_SHAFT 0 // [0,1] 0: normal, 1: invert
+    //#define GLOBAL_DIAG0_ERROR 0 // [0,1]
+    //#define GLOBAL_DIAG0_OTPW 0 // [0,1]
+    //#define GLOBAL_DIAG0_STALL 0 // [0,1]
+    //#define GLOBAL_DIAG1_STALL 0 // [0,1]
+    //#define GLOBAL_DIAG1_INDEX 0 // [0,1]
+    //#define GLOBAL_DIAG1_ONSTATE 0 // [0,1]
+    //#define GLOBAL_DIAG1_ONSTATE 0 // [0,1]
+    //#define GLOBAL_DIAG0_INT_PUSHPULL 0 // [0,1]
+    //#define GLOBAL_DIAG1_INT_PUSHPULL 0 // [0,1]
+    //#define GLOBAL_SMALL_HYSTERESIS 0 // [0,1]
+    //#define GLOBAL_STOP_ENABLE 0 // [0,1]
+    //#define GLOBAL_DIRECT_MODE 0 // [0,1]
 
-  //#define E0_IS_TMC2130
-  #define E0_IHOLD      31   // 0-31
-  #define E0_IRUN       31   // 0-31
-  #define E0_IHOLDDELAY 15   // 0-15
-  #define E0_ISCALE     1    // 0: Normal, 1: AIN
-  #define E0_MICROSTEPS 16   // number of microsteps
-  #define E0_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define E0_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+    /* VELOCITY DEPENDEND DRIVE FEATURES */
 
-  //#define E1_IS_TMC2130
-  #define E1_IHOLD      31   // 0-31
-  #define E1_IRUN       31   // 0-31
-  #define E1_IHOLDDELAY 15   // 0-15
-  #define E1_ISCALE     1    // 0: Normal, 1: AIN
-  #define E1_MICROSTEPS 16   // number of microsteps
-  #define E1_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define E1_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+    #define GLOBAL_IHOLD 22 // [0-31] 0: min, 31: max
+    #define GLOBAL_IRUN 31 // [0-31] 0: min, 31: max
+    #define GLOBAL_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    //#define GLOBAL_TPOWERDOWN 0 // [0-255] 0: min, 255: about 4 seconds
+    //#define GLOBAL_TPWMTHRS 0 // [0-1048576] e.g. 20 corresponds with 2000 steps/s
+    //#define GLOBAL_TCOOLTHRS 0 // [0-1048576] e.g. 20 corresponds with 2000 steps/s
+    #define GLOBAL_THIGH 10 // [0-1048576] e.g. 20 corresponds with 2000 steps/s
 
-  //#define E2_IS_TMC2130
-  #define E2_IHOLD      31   // 0-31
-  #define E2_IRUN       31   // 0-31
-  #define E2_IHOLDDELAY 15   // 0-15
-  #define E2_ISCALE     1    // 0: Normal, 1: AIN
-  #define E2_MICROSTEPS 16   // number of microsteps
-  #define E2_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define E2_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+    /* SPI MODE CONFIGURATION */
 
-  //#define E3_IS_TMC2130
-  #define E3_IHOLD      31   // 0-31
-  #define E3_IRUN       31   // 0-31
-  #define E3_IHOLDDELAY 15   // 0-15
-  #define E3_ISCALE     1    // 0: Normal, 1: AIN
-  #define E3_MICROSTEPS 16   // number of microsteps
-  #define E3_TBL        1    // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
-  #define E3_TOFF       8    // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+    //#define GLOBAL_XDIRECT 0 //
 
+    /* DCSTEP MINIMUM VELOCITY */
+
+    //#define GLOBAL_VDCMIN 0 //
+
+    /* MOTOR DRIVER CONFIGURATION*/
+
+    //#define GLOBAL_DEDGE 0 //
+    //#define GLOBAL_DISS2G 0 //
+    #define GLOBAL_INTPOL 1 // 0: off 1: 256 microstep interpolation
+    #define GLOBAL_MRES 16 // number of microsteps
+    #define GLOBAL_SYNC 1 // [0-15]
+    #define GLOBAL_VHIGHCHM 1 // [0,1] 0: normal, 1: high velocity stepper mode
+    #define GLOBAL_VHIGHFS 0 // [0,1] 0: normal, 1: switch to full steps for high velocities
+    // #define GLOBAL_VSENSE 0 // [0,1] 0: normal, 1: high sensitivity (not recommended)
+    #define GLOBAL_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define GLOBAL_CHM 0 // [0,1] 0: spreadCycle, 1: Constant off time with fast decay time.
+    //#define GLOBAL_RNDTF 0 //
+    //#define GLOBAL_DISFDCC 0 //
+    //#define GLOBAL_FD 0 //
+    //#define GLOBAL_HEND 0 //
+    //#define GLOBAL_HSTRT 0 //
+    #define GLOBAL_TOFF 10 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    //#define GLOBAL_SFILT 0 //
+    //#define GLOBAL_SGT 0 //
+    //#define GLOBAL_SEIMIN 0 //
+    //#define GLOBAL_SEDN 0 //
+    //#define GLOBAL_SEMAX 0 //
+    //#define GLOBAL_SEUP 0 //
+    //#define GLOBAL_SEMIN 0 //
+
+    //#define GLOBAL_DC_TIME 0 //
+    //#define GLOBAL_DC_SG 0 //
+
+    //#define GLOBAL_FREEWHEEL 0 //
+    //#define GLOBAL_PWM_SYMMETRIC 0 //
+    //#define GLOBAL_PWM_AUTOSCALE 0 //
+    //#define GLOBAL_PWM_FREQ 0 //
+    //#define GLOBAL_PWM_GRAD 0 //
+    //#define GLOBAL_PWM_AMPL 0 //
+
+    //#define GLOBAL_ENCM_CTRL 0 //
+
+  #else
+
+    #define X_IS_TMC2130
+    #define X_IHOLD 31 // [0-31] 0: min, 31: max
+    #define X_IRUN 31 // [0-31] 0: min, 31: max
+    #define X_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define X_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define X_MRES 16 // number of microsteps
+    #define X_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define X_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    //#define X2_IS_TMC2130
+    #define X2_IHOLD 31 // [0-31] 0: min, 31: max
+    #define X2_IRUN 31 // [0-31] 0: min, 31: max
+    #define X2_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define X2_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define X2_MRES 16 // number of microsteps
+    #define X2_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define X2_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    #define Y_IS_TMC2130
+    #define Y_IHOLD 31 // [0-31] 0: min, 31: max
+    #define Y_IRUN 31 // [0-31] 0: min, 31: max
+    #define Y_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define Y_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define Y_MRES 16 // number of microsteps
+    #define Y_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define Y_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    //#define Y2_IS_TMC2130
+    #define Y2_IHOLD 31 // [0-31] 0: min, 31: max
+    #define Y2_IRUN 31 // [0-31] 0: min, 31: max
+    #define Y2_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define Y2_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define Y2_MRES 16 // number of microsteps
+    #define Y2_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define Y2_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    //#define Z_IS_TMC2130
+    #define Z_IHOLD 31 // [0-31] 0: min, 31: max
+    #define Z_IRUN 31 // [0-31] 0: min, 31: max
+    #define Z_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define Z_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define Z_MRES 16 // number of microsteps
+    #define Z_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define Z_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    //#define Z2_IS_TMC2130
+    #define Z2_IHOLD 31 // [0-31] 0: min, 31: max
+    #define Z2_IRUN 31 // [0-31] 0: min, 31: max
+    #define Z2_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define Z2_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define Z2_MRES 16 // number of microsteps
+    #define Z2_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define Z2_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    //#define E0_IS_TMC2130
+    #define E0_IHOLD 31 // [0-31] 0: min, 31: max
+    #define E0_IRUN 31 // [0-31] 0: min, 31: max
+    #define E0_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define E0_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define E0_MRES 16 // number of microsteps
+    #define E0_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define E0_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    //#define E1_IS_TMC2130
+    #define E1_IHOLD 31 // [0-31] 0: min, 31: max
+    #define E1_IRUN 31 // [0-31] 0: min, 31: max
+    #define E1_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define E1_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define E1_MRES 16 // number of microsteps
+    #define E1_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define E1_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    //#define E2_IS_TMC2130
+    #define E2_IHOLD 31 // [0-31] 0: min, 31: max
+    #define E2_IRUN 31 // [0-31] 0: min, 31: max
+    #define E2_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define E2_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define E2_MRES 16 // number of microsteps
+    #define E2_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define E2_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+    //#define E3_IS_TMC2130
+    #define E3_IHOLD 31 // [0-31] 0: min, 31: max
+    #define E3_IRUN 31 // [0-31] 0: min, 31: max
+    #define E3_IHOLDDELAY 15 // [0-15] 0: min, 15: about 4 seconds
+    #define E3_I_SCALE_ANALOG 1 // 0: Normal, 1: AIN
+    #define E3_MRES 16 // number of microsteps
+    #define E3_TBL 1 // 0-3: set comparator blank time to 16, 24, 36 or 54 clocks, 1 or 2 is recommended
+    #define E3_TOFF 8 // 0: driver disable, 1: use only with TBL>2, 2-15: off time setting during slow decay phase
+
+
+  #endif
 #endif
 
 /******************************************************************************\

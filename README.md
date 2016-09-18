@@ -5,6 +5,13 @@
 Additional documentation can be found at [The Marlin Documentation Project](https://www.marlinfw.org/).
 Please test this firmware and inform us if it misbehaves in any way, volunteers are standing by!
 
+## About this fork
+This fork adds support for the SilentStepStick Trinamic TMC2130 SPI-configurable stepper driver modules. To compile this, you'll need the [TMC2130 Arduino library](https://github.com/makertum/Trinamic_TMC2130). The configuration is documented in the Config_adv.h and all parameters follow the naming convention in the [TMC2130 datasheet](http://www.trinamic.com/_articles/products/integrated-circuits/tmc2130/_datasheet/TMC2130_datasheet.pdf).
+
+## How to use
+Connect your the SPI2130 to the hardware SPI interface of your control electronics and define the required cable select pins in your `pins_<your controller>.h`, e.g. `#define X_CS_PIN 53` and `#define Y_CS_PIN 49` for a Ramps 1.4 (SPI is routed to AUX3).
+Edit `Configuration_adv.h` to make use of the drivers. You can use the basic configuration to get started.
+
 ## Release Candidate -- Marlin 1.1.0-RC7 - 31 July 2016
 
 __Not for production use – use with caution!__

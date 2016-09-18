@@ -5197,30 +5197,33 @@ inline void gcode_M119() { endstops.M119(); }
 inline void gcode_M122() {
     SERIAL_PROTOCOLLNPGM("REPORTING TMC2130 STATUS");
     #if ENABLED(HAVE_TMC2130DRIVER) && ENABLED(X_IS_TMC2130)
-      stepperX.readStatus();
+      stepperX.read_STAT();
       SERIAL_PROTOCOLLN("X-AXIS: ");
       SERIAL_PROTOCOLLN((stepperX.isReset() ? "RESET " : "----- "));
       SERIAL_PROTOCOLLN((stepperX.isError() ? "ERROR " : "----- "));
       SERIAL_PROTOCOLLN((stepperX.isStallguard() ? "SLGRD " : "----- "));
       SERIAL_PROTOCOLLN((stepperX.isStandstill() ? "STILL " : "----- "));
+      SERIAL_PROTOCOLLN((stepperX.debug()));
       SERIAL_PROTOCOLLN("-----");
     #endif
     #if ENABLED(HAVE_TMC2130DRIVER) && ENABLED(Y_IS_TMC2130)
-      stepperY.readStatus();
+      stepperY.read_STAT();
       SERIAL_PROTOCOLLN("Y-AXIS: ");
       SERIAL_PROTOCOLLN((stepperY.isReset() ? "RESET " : "----- "));
       SERIAL_PROTOCOLLN((stepperY.isError() ? "ERROR " : "----- "));
       SERIAL_PROTOCOLLN((stepperY.isStallguard() ? "SLGRD " : "----- "));
       SERIAL_PROTOCOLLN((stepperY.isStandstill() ? "STILL " : "----- "));
+      SERIAL_PROTOCOLLN((stepperY.debug()));
       SERIAL_PROTOCOLLN("-----");
     #endif
     #if ENABLED(HAVE_TMC2130DRIVER) && ENABLED(Z_IS_TMC2130)
-      stepperZ.readStatus();
+      stepperZ.read_STAT();
       SERIAL_PROTOCOLLN("Z-AXIS: ");
       SERIAL_PROTOCOLLN((stepperZ.isReset() ? "RESET " : "----- "));
       SERIAL_PROTOCOLLN((stepperZ.isError() ? "ERROR " : "----- "));
       SERIAL_PROTOCOLLN((stepperZ.isStallguard() ? "SLGRD " : "----- "));
       SERIAL_PROTOCOLLN((stepperZ.isStandstill() ? "STILL " : "----- "));
+      SERIAL_PROTOCOLLN((stepperZ.debug()));
       SERIAL_PROTOCOLLN("-----");
     #endif
 }
